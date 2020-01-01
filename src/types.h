@@ -10,8 +10,12 @@ typedef struct{
     k_ulong_t ret;
     k_ulong_t syscall;
     k_ulong_t regs[REG_NUM_MAX];
+    char syscall_mask[SYSCALL_MASK_SIZE];
+}tinfo;
 
-}ctinfo;
+#define HIT_SYSCALL_MASK(ti) \
+    ti->syscall_mask[(ti->syscall)/sizeof(char)] & (1 << ((ti->syscall) - 1))
+
 
 typedef enum {
     SC_IN,
