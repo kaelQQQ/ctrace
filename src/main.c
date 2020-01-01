@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include <string.h>
 #include <errno.h>
-#include"ctrace.h"
+#include"trace.h"
 
 int main(int argc, char * argv[]) {
 

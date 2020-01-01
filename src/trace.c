@@ -88,7 +88,7 @@ int ct_syscall_next(tinfo* ti) {
         gettimeofday (&out, NULL);
         ti->cost = TM_US_2_MS(TM_S_2_US(out.tv_sec - in.tv_sec) + out.tv_usec - in.tv_usec);
         if (HIT_SYSCALL_MASK(ti)) {
-            break
+            break;
         }
     }
 
