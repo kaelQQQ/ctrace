@@ -5,7 +5,7 @@
 #include "types.h"
 
 
-tinfo* ct_attach_proc(pid_t pid);
+tinfo* t_attach_proc(pid_t pid);
 int t_syscall_next(tinfo* ti);
 int t_syscall_in(tinfo* ti);
 int t_syscall_out(tinfo* ti);

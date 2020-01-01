@@ -4,6 +4,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include <sys/types.h>
 #include "trace.h"
 #include "syscall_args.h"
@@ -49,7 +50,7 @@ static int _syscall_out(tinfo* ti) {
 
 
 
-tinfo* ct_attach_proc(pid_t pid) {
+tinfo* t_attach_proc(pid_t pid) {
     do {
         if (getpid() == pid || pid < 1) {
             break;
@@ -73,7 +74,7 @@ tinfo* ct_attach_proc(pid_t pid) {
 }
 
 
-int ct_syscall_next(tinfo* ti) {
+int t_syscall_next(tinfo* ti) {
 
     while(1) {
         struct timeval in, out;
@@ -98,7 +99,7 @@ int ct_syscall_next(tinfo* ti) {
     return 0;
 }
 
-int ct_detach_proc(tinfo* ti) {
+int t_detach_proc(tinfo* ti) {
     if (ti) {
         ptrace(PTRACE_DETACH, ti->pid, 0, 0);
         free(ti);
