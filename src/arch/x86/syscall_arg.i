@@ -9,5 +9,5 @@ void get_syscall_args(tinfo *ti, struct user_regs_struct *regs) {
 }
 
 void get_syscall_ret(tinfo *ti, struct user_regs_struct *regs) {
-    ti->ret = regs->rax;
+    ti->ret = (int)regs->rax;
 }

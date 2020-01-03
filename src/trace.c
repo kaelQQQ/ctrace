@@ -88,14 +88,16 @@ int t_syscall_next(tinfo* ti) {
         }
         gettimeofday (&out, NULL);
         ti->cost = TM_US_2_MS(TM_S_2_US(out.tv_sec - in.tv_sec) + out.tv_usec - in.tv_usec);
+        //printf("syscall:%lu, mask:%x\n", ti->syscall, ti->syscall_mask[5]);
         if (HIT_SYSCALL_MASK(ti)) {
+            printf("hit it\n");
             break;
         }
     }
 
-    if (ti->syscall == 1) {
-        print_syscall(1, ti, SC_OUT);
-    }    
+    //if (ti->syscall == 1) {
+    //    print_syscall(1, ti, SC_OUT);
+    //}    
     return 0;
 }
 

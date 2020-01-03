@@ -8,7 +8,7 @@
 #include "arch/x86/syscall_arg.i"
 
 
-static int peekdata(const int pid, k_ulong_t addr, k_ulong_t len, void *buff)
+int peekdata(const int pid, k_ulong_t addr, k_ulong_t len, void *buff)
 {
     unsigned int residue = addr & (sizeof(long) - 1);
     while (len) {
