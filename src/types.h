@@ -14,7 +14,12 @@ typedef struct{
 }tinfo;
 
 #define HIT_SYSCALL_MASK(ti) \
-    ti->syscall_mask[(ti->syscall)/sizeof(char)] & (1 << ((ti->syscall) - 1))
+    ti->syscall_mask[(ti->syscall)/sizeof(char)] & (1 << ((ti->syscall%sizeof(char)) - 1))
+
+#define SET__SYSCALL_MASK(ti, m) \
+    ti->syscall_mask[(m)/sizeof(char)] |= (1 << (((m)%sizeof(char)) - 1))
+
+
 
 
 typedef enum {
